@@ -87,9 +87,16 @@
 /* pico-sdk uses static assertions, which fail the compilation */
 #define static_assert(...)
 
-/* pico-sdk expects __CONCAT to be defined */
-#define CAT(a, b) a ## b
-#define __CONCAT(a, b) CAT(a, b)
+/**
+ * pico-sdk expects __CONCAT to be defined, but we can't use
+ * Zephyr's sys/cdefs.h because this file is also included in
+ * assembly files. Therefore, we have to manually define __CONCAT
+ * only when it isn't defined, to avoid a conflict.
+ */
+#ifndef __CONCAT
+#define __CAT(a, b) a ## b
+#define __CONCAT(a, b) __CAT(a, b)
+#endif /* __CONCAT */
 
 /* Disable binary info */
 #define PICO_NO_BINARY_INFO 1
