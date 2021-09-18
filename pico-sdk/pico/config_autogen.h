@@ -91,5 +91,9 @@
 #define CAT(a, b) a ## b
 #define __CONCAT(a, b) CAT(a, b)
 
+/* Disable binary info */
+#define PICO_NO_BINARY_INFO 1
+#define bi_decl_if_func_used(...)
+
 #endif
 // based on PICO_RP2040_CONFIG_HEADER_FILES:
