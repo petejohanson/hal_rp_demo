@@ -1,1 +1,1 @@
-add_subdirectory_ifdef(CONFIG_HAS_RASPBERRYPI pico-sdk)
+add_subdirectory_ifdef(CONFIG_HAS_RASPBERRYPI_PICO pico-sdk)
