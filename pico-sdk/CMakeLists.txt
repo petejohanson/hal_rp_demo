@@ -7,7 +7,19 @@ set(BOOT_STAGE_DIR ${RP2_COMMON_DIR}/boot_stage2)
 
 # Compile the second stage bootloader as a separate executable
 
-add_executable(boot_stage2 ${BOOT_STAGE_DIR}/${CONFIG_RP2_FLASH_BOOT_FILE})
+add_executable(boot_stage2)
+
+if(CONFIG_RP2_FLASH_W25Q080)
+	target_sources(boot_stage2 PRIVATE ${BOOT_STAGE_DIR}/boot2_w25q080.S)
+elseif(CONFIG_RP2_FLASH_GENERIC_03H)
+	target_sources(boot_stage2 PRIVATE ${BOOT_STAGE_DIR}/boot2_generic_03h.S)
+elseif(CONFIG_RP2_FLASH_IS25LP080)
+	target_sources(boot_stage2 PRIVATE ${BOOT_STAGE_DIR}/boot2_is25lp080.S)
+elseif(CONFIG_RP2_FLASH_W25X10CL)
+	target_sources(boot_stage2 PRIVATE ${BOOT_STAGE_DIR}/boot2_w25x10cl.S)
+else()
+	message(FATAL_ERROR Unknown flash type)
+endif()
 
 target_include_directories(boot_stage2 PUBLIC
 	${CMAKE_CURRENT_LIST_DIR}
