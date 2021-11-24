@@ -51,6 +51,7 @@ add_custom_command(OUTPUT boot_stage2.S
 
 # Pico sources necessary for every build
 zephyr_library_sources(
+	boot_stage2.S
 	${RP2_COMMON_DIR}/hardware_clocks/clocks.c
 	${RP2_COMMON_DIR}/hardware_pll/pll.c
 	${RP2_COMMON_DIR}/hardware_xosc/xosc.c
