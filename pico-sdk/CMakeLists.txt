@@ -63,6 +63,7 @@ zephyr_library_sources(
 zephyr_include_directories(
 	${RP2_COMMON_DIR}/hardware_base/include
 	${RP2_COMMON_DIR}/hardware_clocks/include
+	${RP2_COMMON_DIR}/hardware_gpio/include
 	${RP2_COMMON_DIR}/hardware_watchdog/include
 	${RP2_COMMON_DIR}/hardware_xosc/include
 	${RP2_COMMON_DIR}/hardware_pll/include
@@ -87,7 +88,7 @@ macro(pico_simple_hardware_target NAME)
 	zephyr_include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 endmacro()
 
-if(CONFIG_GPIO OR CONFIG_SERIAL)
+if(CONFIG_GPIO OR CONFIG_PINCTRL)
 	add_subdirectory(${RP2_COMMON_DIR}/hardware_gpio)
 endif()
 
