@@ -102,3 +102,7 @@ endif()
 if(CONFIG_PWM)
 	add_subdirectory(${RP2_COMMON_DIR}/hardware_pwm)
 endif()
+
+# Some pico-sdk headers define static functions that are
+# not always used, and cause unwanted compilation warnings
+zephyr_library_compile_options(-Wno-unused-function)

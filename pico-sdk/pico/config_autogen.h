@@ -102,5 +102,8 @@
 #define PICO_NO_BINARY_INFO 1
 #define bi_decl_if_func_used(...)
 
+/* Disable all uses of __always_inline */
+#define __always_inline
+
 #endif
 // based on PICO_RP2040_CONFIG_HEADER_FILES:
