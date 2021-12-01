@@ -103,7 +103,9 @@
 #define bi_decl_if_func_used(...)
 
 /* Disable all uses of __always_inline */
-#define __always_inline
+#ifndef __always_inline
+#define __always_inline __inline__ __attribute__((__always_inline__))
+#endif /* __always_inline */
 
 #endif
 // based on PICO_RP2040_CONFIG_HEADER_FILES:
