@@ -15,6 +15,10 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+#ifndef __STRING
+#define __STRING(x) #x
+#endif
+
 typedef unsigned int uint;
 
 /*! \typedef absolute_time_t

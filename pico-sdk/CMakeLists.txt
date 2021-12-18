@@ -75,6 +75,7 @@ zephyr_include_directories(
 	${RP2040_DIR}/hardware_regs/include
 	${RP2040_DIR}/hardware_structs/include
 	${COMMON_DIR}/pico_base/include
+	${COMMON_DIR}/pico_time/include
 	${COMMON_DIR}/pico_binary_info/include
 	${RP2_COMMON_DIR}/pico_platform/include
 	${CMAKE_CURRENT_LIST_DIR}
@@ -94,6 +95,10 @@ endif()
 
 if(CONFIG_SERIAL)
 	add_subdirectory(${RP2_COMMON_DIR}/hardware_uart)
+endif()
+
+if(CONFIG_SPI)
+	add_subdirectory(${RP2_COMMON_DIR}/hardware_spi)
 endif()
 
 if(CONFIG_ADC)
